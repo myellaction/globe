@@ -16,11 +16,12 @@ const N = 30;
 const gData = [
     {lat: 51, lng: 9, size: 50, color: '#dcfa1b'}
 ];
+const githubPath = '/globe';
 
 const world = new Globe(document.getElementById('globeViz'), { animateIn: false })
-    .globeImageUrl('/assets/img/earth.jpg')
-    .bumpImageUrl('/assets/img/earth2.png')
-    .backgroundImageUrl('/assets/img/sky.png')
+    .globeImageUrl(githubPath + '/assets/img/earth.jpg')
+    .bumpImageUrl(githubPath + '/assets/img/earth2.png')
+    .backgroundImageUrl(githubPath + '/assets/img/sky.png')
     .htmlElementsData(gData)
     .htmlElement(d => {
         const el = document.createElement('div');
@@ -39,7 +40,7 @@ const world = new Globe(document.getElementById('globeViz'), { animateIn: false 
         div.textContent = 'Германия';
 
         const img = document.createElement('img');
-        img.src = '/assets/img/Germany.webp';
+        img.src = githubPath + '/assets/img/Germany.webp';
         div.appendChild(img);
 
         el.appendChild(div);
@@ -55,7 +56,7 @@ world.controls().autoRotateSpeed = 0.35;
 world.pointOfView({ lat: 30, lng: 30, altitude: 1.8 }, 0);
 
 // Add clouds sphere
-const CLOUDS_IMG_URL = '/assets/img/clouds.png';
+const CLOUDS_IMG_URL = githubPath + '/assets/img/clouds.png';
 const CLOUDS_ALT = 0.004;
 const CLOUDS_ROTATION_SPEED = -0.006; // deg/frame
 
