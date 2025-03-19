@@ -359,6 +359,116 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 } 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #050526;
+  color: #fff;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 20px;
+}
+
+#globeViz {
+  user-select: none;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.globe__wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.globe__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(17, 36, 61, 0.68);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+.globe__bg_hide {
+  transform: scale(0);
+  transition: all 0.3s;
+}
+.globe__title {
+  font-size: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.globe__btn {
+  border: 2px solid #050526;
+  padding: 20px 40px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.globe__btn:hover {
+  transition: all 0.3s;
+  background-color: #050526;
+}
+.globe__back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 2px solid #050526;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+.globe__back:hover {
+  transition: all 0.3s;
+  background-color: #050526;
+}
+.globe__back_active {
+  transition: all 0.3s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  font-size: 30px;
+}
+
 canvas {
   display: block;
 }
@@ -366,10 +476,33 @@ canvas {
 .popup-wrapper {
   position: relative;
 }
+.popup-wrapper svg {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s;
+}
+.popup-wrapper svg:hover {
+  transform: translateY(-10px) scale(1.2);
+  transition: all 0.3s;
+}
 .popup-wrapper_active .popup {
   opacity: 1;
   visibility: visible;
-  transition: all 0.3s;
+  transform: scale(1);
+  transform-origin: top left;
+  transition: all 0.3s, opacity 0s, visibility 0s;
+}
+.popup-wrapper_active svg {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0s;
+}
+.popup-wrapper_deactive {
+  opacity: 0;
+  visibility: hidden;
+}
+.popup-wrapper_deactive svg {
+  display: none;
 }
 
 .popup {
@@ -382,11 +515,14 @@ canvas {
   background-color: #14194b;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
+  transform: scale(0);
+  transform-origin: top left;
+  transition: transform 0s 0.1s, visibility 0.1s, opacity 0.1s;
   width: 200px;
   line-height: 120%;
   color: #fff;
   font-family: sans-serif;
+  z-index: 2;
 }
 .popup img {
   display: block;
@@ -394,6 +530,11 @@ canvas {
   height: auto;
   object-fit: cover;
   margin-top: 12px;
+}
+
+.item {
+  height: 40px;
+  font-size: 24px;
 }
 
 /*# sourceMappingURL=style.css.map */
