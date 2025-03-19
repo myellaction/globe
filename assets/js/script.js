@@ -102,8 +102,12 @@ new THREE.TextureLoader().load(CLOUDS_IMG_URL, cloudsTexture => {
     })();
 });
 
+let prevHeight = window.innerHeight;
 window.addEventListener('resize', () => {
-    window.location.href = window.location.href;
+    if(Math.abs(prevHeight - window.innerHeight) > 100){
+        window.location.href = window.location.href;
+    }
+    prevHeight = window.innerHeight;
 });
 
 document.querySelector('.globe__btn').addEventListener('click', () => {
